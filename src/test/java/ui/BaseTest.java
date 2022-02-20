@@ -1,16 +1,19 @@
 package ui;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import helpers.Attach;
 import lombok.SneakyThrows;
+import org.checkerframework.checker.units.qual.A;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.URI;
 import java.util.Map;
 
 import static config.ProjectConfig.PROJECT_CONFIG;
+import static io.qameta.allure.Allure.step;
 
 public class BaseTest {
 
@@ -39,6 +42,15 @@ public class BaseTest {
         Configuration.timeout = 30000;
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         Configuration.browserCapabilities = capabilities;
+    }
+
+    @AfterEach
+    public void tearDown() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+        step("Закрыть браузер", Selenide::closeWebDriver);
     }
 
 }
