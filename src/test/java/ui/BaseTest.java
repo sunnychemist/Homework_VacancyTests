@@ -4,13 +4,10 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import helpers.Attach;
 import lombok.SneakyThrows;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.Map;
 
 import static config.ProjectConfig.PROJECT_CONFIG;
 import static io.qameta.allure.Allure.step;
