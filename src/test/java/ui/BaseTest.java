@@ -25,10 +25,8 @@ public class BaseTest {
             Configuration.remote = PROJECT_CONFIG.removeUrl();
             capabilities.setCapability("browserName", PROJECT_CONFIG.browser());
             capabilities.setCapability("browserVersion", PROJECT_CONFIG.browserVersion());
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                    "enableVNC", true,
-                    "enableVideo", true
-            ));
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
         }
         ChromeOptions chromeOptions = new ChromeOptions();
 
