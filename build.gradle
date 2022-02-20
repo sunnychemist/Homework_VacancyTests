@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.8.1'
+}
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+ext{
+    junitVersion = "5.8.2"
+    allureVersion = "2.13.9"
+    lombokVersion = "1.18.22"
+}
+
+allure {
+    autoconfigure = true
+    version = '2.13.9'
+    aspectjVersion = '1.9.6'
+    aspectjweaver = true
+    configuration = 'implementation'
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    implementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
+    implementation 'org.junit.platform:junit-platform-runner:1.8.2'
+    implementation 'com.codeborne:selenide:6.3.0'
+    implementation 'io.qameta.allure:allure-selenide:2.17.2'
+    implementation "io.qameta.allure:allure-junit5:$allureVersion"
+    implementation "org.aeonbits.owner:owner:1.0.12"
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    //lombok
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+test {
+    useJUnitPlatform()
+}
+
+
