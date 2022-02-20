@@ -19,7 +19,7 @@ public interface ProjectConfig extends Config {
     @DefaultValue("1920x1080")
     String browserSize();
     String browserMobileView();
-    String remoteDriverUrl();
+    String removeUrl();
     String videoStorage();
     @DefaultValue("https://www.rabota.ru/")
     String baseUrl();
