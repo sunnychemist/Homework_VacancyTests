@@ -20,5 +20,6 @@ public interface ProjectConfig extends Config {
     String browserMobileView();
     String remoteDriverUrl();
     String videoStorage();
+    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
     String webUrl();
 }
