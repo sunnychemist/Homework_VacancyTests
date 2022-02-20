@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class PassportPage {
     private final SelenideElement container = $("article.split-wrapper__article");
@@ -48,8 +49,8 @@ public class PassportPage {
         return this;
     }
 
-    public PassportPage clickContinue() {
+    public CreateResumePage clickContinue() {
         continueButton.click();
-        return this;
+        return new CreateResumePage();
     }
 }

@@ -4,6 +4,7 @@ package pages;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import models.UserModel;
 import models.VacancyModel;
 
 import static com.codeborne.selenide.Condition.*;
@@ -17,6 +18,9 @@ public class MainPage extends BasePage {
     private final SelenideElement searchButton = $(".vacancy-search-form-smart__btn");
     private final SelenideElement addResumeButton = $("button[aria-label='Создать резюме']");
     private final ElementsCollection vacancies = $$("article.vacancy-preview-card");
+    private final SelenideElement popupContainer = $(".r-email-confirm-reminder");
+    private final SelenideElement popupTitle = popupContainer.$(".r-email-confirm-reminder__title");
+    private final SelenideElement popupEmailSpan = popupContainer.$(".r-email-confirm-reminder__email");
 
 
     public MainPage openPage() {
@@ -67,5 +71,12 @@ public class MainPage extends BasePage {
     public PassportPage clickResumeCreate() {
         addResumeButton.click();
         return new PassportPage();
+    }
+
+    public MainPage checkRegistrationPopup(UserModel userModel) {
+        popupContainer.shouldBe(visible);
+        popupTitle.shouldHave(exactText("Подтвердите почту"));
+        popupEmailSpan.shouldHave(exactText(userModel.getEmail()));
+        return this;
     }
 }
