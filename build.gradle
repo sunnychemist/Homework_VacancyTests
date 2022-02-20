@@ -18,17 +18,18 @@ version '1.0-SNAPSHOT'
 
 ext{
     junitVersion = "5.7.2"
-    allureVersion = "2.13.9"
+    allureVersion = "2.16.1"
     lombokVersion = "1.18.22"
 }
 
 allure {
+    version = allureVersion
     autoconfigure = true
-    version = '2.13.9'
-    aspectjVersion = '1.9.6'
     aspectjweaver = true
-    configuration = 'implementation'
-
+    configuration = "implementation"
+    useJUnit5 {
+        version = allureVersion
+    }
 }
 
 repositories {

@@ -2,14 +2,15 @@ package config;
 
 
 import org.aeonbits.owner.Config;
+import org.aeonbits.owner.ConfigFactory;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-        "system:properties",
-        "classpath:config/local.properties",
-        "classpath:config/remote.properties"
+        "classpath:config/config.properties"
 })
 public interface ProjectConfig extends Config {
+
+    ProjectConfig PROJECT_CONFIG = ConfigFactory.create(ProjectConfig.class, System.getProperties());
 
     @DefaultValue("chrome")
     String browser();
@@ -20,6 +21,9 @@ public interface ProjectConfig extends Config {
     String browserMobileView();
     String remoteDriverUrl();
     String videoStorage();
-    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
-    String webUrl();
+    @DefaultValue("https://www.rabota.ru/")
+    String baseUrl();
+    @Key("localRun")
+    @DefaultValue(value = "false")
+    boolean localRun();
 }
