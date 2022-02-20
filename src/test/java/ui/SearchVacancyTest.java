@@ -9,7 +9,7 @@ public class SearchVacancyTest extends BaseTest {
     @Test
     public void searchQAVacanciesOnMoscow() {
 
-        var vacancy = VacancyModel.build();
+        VacancyModel vacancy = VacancyModel.build();
 
         new MainPage()
                 .openPage()

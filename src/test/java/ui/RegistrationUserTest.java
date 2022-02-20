@@ -9,7 +9,7 @@ public class RegistrationUserTest extends BaseTest{
     @Test
     public void createNewUserTest() {
 
-        var user = UserModel.build();
+        UserModel user = UserModel.build();
 
         new MainPage()
                 .openPage()
