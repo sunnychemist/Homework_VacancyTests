@@ -26,10 +26,6 @@ public class BaseTest {
                     "enableVNC", true,
                     "enableVideo", true
             ));
-            RemoteWebDriver driver = new RemoteWebDriver(
-                    URI.create("http://selenoid:4444/wd/hub").toURL(),
-                    capabilities
-            );
         }
         ChromeOptions chromeOptions = new ChromeOptions();
 
