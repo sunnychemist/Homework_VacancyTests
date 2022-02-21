@@ -50,6 +50,7 @@ dependencies {
     //api
     implementation 'io.rest-assured:rest-assured:4.4.0'
     implementation 'org.assertj:assertj-core:3.21.0'
+    implementation "io.qameta.allure:allure-rest-assured:$allureVersion"
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
     //lombok
     compileOnly "org.projectlombok:lombok:$lombokVersion"
