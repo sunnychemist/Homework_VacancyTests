@@ -1,12 +1,14 @@
 package pages;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 
 public class MainEmployersPage extends BasePage {
@@ -15,6 +17,8 @@ public class MainEmployersPage extends BasePage {
     private final SelenideElement title = $(".indent-large h2");
     private final SelenideElement searchInput = $("input.multiselect__input");
     private final SelenideElement searchButton = $(".search-form-x__submit button");
+    private final ElementsCollection professions = $$(".multiselect__content .multiselect__element");
+
 
     @Step("Открываем главную страницу работодателей")
     public MainEmployersPage openPage() {
@@ -31,7 +35,7 @@ public class MainEmployersPage extends BasePage {
     }
 
     @Step("Ищем резюме по запросу {query}")
-    public EmployersSearchResultPage searchEmployees(String query) {
+    public EmployeesSearchResultPage searchEmployees(String query) {
        return fillInQuery(query)
                .clickSearchButton();
     }
@@ -39,12 +43,13 @@ public class MainEmployersPage extends BasePage {
     @Step("Вводим поисковый запрос в поисковую строку")
     public MainEmployersPage fillInQuery(String query) {
         searchInput.val(query);
+        professions.first().click();
         return this;
     }
 
     @Step("Нажимаем на кнопку 'Поиск'")
-    public EmployersSearchResultPage clickSearchButton() {
+    public EmployeesSearchResultPage clickSearchButton() {
         searchButton.click();
-        return new EmployersSearchResultPage();
+        return new EmployeesSearchResultPage();
     }
 }
