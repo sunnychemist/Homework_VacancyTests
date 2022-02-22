@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class EmployeesSearchResultPage extends BasePage{
-    private final SelenideElement container = $("#js-search-results-wrapper");
+    private final SelenideElement container = $("#layout");
     private final ElementsCollection resumes = $$("#resume-search-list .search_title-txt");
 
     @Step("Проверяем что страница поисковой выдачи открылась")
