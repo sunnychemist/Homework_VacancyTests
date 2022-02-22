@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class MainEmployersPage extends BasePage {
 
-    private final SelenideElement container = $(".container p-relative");
+    private final SelenideElement container = $(".hr-search_left");
     private final SelenideElement title = $(".indent-large h2");
     private final SelenideElement searchInput = $("input.multiselect__input");
     private final SelenideElement searchButton = $(".search-form-x__submit button");
