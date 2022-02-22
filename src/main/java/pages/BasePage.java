@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 
@@ -10,6 +9,11 @@ public class BasePage {
 
     public BasePage openPage() {
         open("/");
+        return this;
+    }
+
+    public BasePage openPage(String url) {
+        open(String.format("/%s", url));
         return this;
     }
 

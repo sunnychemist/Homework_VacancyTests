@@ -19,9 +19,9 @@ public interface ProjectConfig extends Config {
     @DefaultValue("1920x1080")
     String browserSize();
     String removeUrl();
-    @DefaultValue("https://www.rabota.ru/")
+    @DefaultValue("https://www.rabota.ru")
     String baseUrl();
     @Key("localRun")
-    @DefaultValue(value = "false")
+    @DefaultValue(value = "true")
     boolean localRun();
 }
