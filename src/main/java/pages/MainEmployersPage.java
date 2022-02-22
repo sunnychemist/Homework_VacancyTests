@@ -7,8 +7,7 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class MainEmployersPage extends BasePage {
@@ -43,8 +42,9 @@ public class MainEmployersPage extends BasePage {
     @Step("Вводим поисковый запрос в поисковую строку")
     public MainEmployersPage fillInQuery(String query) {
         searchInput.val(query);
-        searchInput.click();
-        professions.first().click();
+        actions().click(searchInput).click(professions.first()).build();
+//        searchInput.click();
+//        professions.first().click();
         return this;
     }
 
