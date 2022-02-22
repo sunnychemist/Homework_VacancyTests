@@ -22,6 +22,6 @@ public interface ProjectConfig extends Config {
     @DefaultValue("https://www.rabota.ru")
     String baseUrl();
     @Key("localRun")
-    @DefaultValue(value = "true")
+    @DefaultValue(value = "false")
     boolean localRun();
 }

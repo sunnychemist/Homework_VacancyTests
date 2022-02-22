@@ -16,7 +16,7 @@ java {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-ext{
+ext {
     junitVersion = "5.7.2"
     allureVersion = "2.16.1"
     lombokVersion = "1.18.22"

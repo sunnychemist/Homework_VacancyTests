@@ -18,8 +18,7 @@ public class BaseTest {
     @BeforeAll
     static void before() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        System.out.println("localRun = " + PROJECT_CONFIG.isLocalRun());
-        if (!PROJECT_CONFIG.isLocalRun()) {
+        if (!PROJECT_CONFIG.localRun()) {
             Configuration.remote = PROJECT_CONFIG.removeUrl();
             capabilities.setCapability("browserName", PROJECT_CONFIG.browser());
             capabilities.setCapability("browserVersion", PROJECT_CONFIG.browserVersion());
