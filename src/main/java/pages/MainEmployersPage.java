@@ -42,7 +42,7 @@ public class MainEmployersPage extends BasePage {
     @Step("Вводим поисковый запрос в поисковую строку")
     public MainEmployersPage fillInQuery(String query) {
         searchInput.val(query);
-        actions().click(searchInput).click(professions.first()).build().perform();
+        actions().contextClick(searchInput).click(professions.first()).build().perform();
 //        searchInput.click();
 //        professions.first().click();
         return this;
