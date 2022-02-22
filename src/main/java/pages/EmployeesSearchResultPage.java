@@ -12,13 +12,11 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class EmployeesSearchResultPage extends BasePage{
     private final SelenideElement container = $("#js-search-results-wrapper");
-    private final SelenideElement searchQueryResultTitle = $(".b-center__header");
     private final ElementsCollection resumes = $$("#resume-search-list .search_title-txt");
 
     @Step("Проверяем что страница поисковой выдачи открылась")
-    public EmployeesSearchResultPage shouldBeOpened(String query) {
+    public EmployeesSearchResultPage shouldBeOpened() {
         container.shouldBe(visible);
-        searchQueryResultTitle.shouldHave(exactText(query));
         return this;
     }
 

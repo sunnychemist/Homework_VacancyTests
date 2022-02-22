@@ -33,21 +33,6 @@ public class MainEmployersPage extends BasePage {
         return this;
     }
 
-    @Step("Ищем резюме по запросу {query}")
-    public EmployeesSearchResultPage searchEmployees(String query) {
-       return fillInQuery(query)
-               .clickSearchButton();
-    }
-
-    @Step("Вводим поисковый запрос в поисковую строку")
-    public MainEmployersPage fillInQuery(String query) {
-        searchInput.val(query);
-        actions().contextClick(searchInput).click(professions.first()).build().perform();
-//        searchInput.click();
-//        professions.first().click();
-        return this;
-    }
-
     @Step("Нажимаем на кнопку 'Поиск'")
     public EmployeesSearchResultPage clickSearchButton() {
         searchButton.click();
