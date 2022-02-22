@@ -17,7 +17,7 @@ public class MainEmployersPage extends BasePage {
     private final SelenideElement title = $(".indent-large h2");
     private final SelenideElement searchInput = $("input.multiselect__input");
     private final SelenideElement searchButton = $(".search-form-x__submit button");
-    private final ElementsCollection professions = $$(".multiselect__content .multiselect__element");
+    private final ElementsCollection professions = $$(".multiselect__element");
 
 
     @Step("Открываем главную страницу работодателей")
@@ -43,6 +43,7 @@ public class MainEmployersPage extends BasePage {
     @Step("Вводим поисковый запрос в поисковую строку")
     public MainEmployersPage fillInQuery(String query) {
         searchInput.val(query);
+        searchInput.click();
         professions.first().click();
         return this;
     }
