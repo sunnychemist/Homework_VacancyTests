@@ -1,18 +1,23 @@
 package api;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import lombok.*;
+import lombok.SneakyThrows;
 import models.api.TopPopularProfessionsModel;
 import models.api.TopPopularProfessionsRequestModel;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static config.ProjectConfig.PROJECT_CONFIG;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class PopularProfessionApiTest extends BaseApiTest {
-    ObjectMapper objectMapper = new ObjectMapper();
+public class PopularProfessionApiTest {
+    @BeforeAll
+    static void setUp() {
+        RestAssured.baseURI =  PROJECT_CONFIG.baseUrl();
+    }
 
     @SneakyThrows
     @Test
@@ -20,7 +25,7 @@ public class PopularProfessionApiTest extends BaseApiTest {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .when()
-                .body(objectMapper.writeValueAsString(TopPopularProfessionsModel.newTopPopularProfessionsModel().build()))
+                .body(TopPopularProfessionsModel.newTopPopularProfessionsModel().build())
                 .log().all()
                 .post("/api-web/v4/companies/top.json")
                 .then()
@@ -36,7 +41,7 @@ public class PopularProfessionApiTest extends BaseApiTest {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .when()
-                .body(objectMapper.writeValueAsString(TopPopularProfessionsModel.newTopPopularProfessionsModel().request(model).build()))
+                .body(TopPopularProfessionsModel.newTopPopularProfessionsModel().request(model).build())
                 .log().all()
                 .post("/api-web/v4/companies/top.json")
                 .then()
