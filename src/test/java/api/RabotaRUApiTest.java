@@ -13,13 +13,25 @@ import static config.ProjectConfig.PROJECT_CONFIG;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class PopularProfessionApiTest {
+public class RabotaRUApiTest {
     @BeforeAll
     static void setUp() {
         RestAssured.baseURI =  PROJECT_CONFIG.baseUrl();
     }
 
-    @SneakyThrows
+    @Test
+    public void getRegionsTest() {
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .when()
+                .log().all()
+                .get("/api/v3/regions")
+                .then()
+                .extract().response();
+
+        assertThat(response.statusCode()).isEqualTo(200);
+    }
+
     @Test
     public void successfulViewTopProfessionPopularTest() {
         Response response = given()
@@ -34,7 +46,6 @@ public class PopularProfessionApiTest {
         assertThat(response.statusCode()).isEqualTo(200);
     }
 
-    @SneakyThrows
     @Test
     public void negativeViewTopProfessionPopularTest() {
         TopPopularProfessionsRequestModel model = TopPopularProfessionsRequestModel.newModel().region_id(0).build();
